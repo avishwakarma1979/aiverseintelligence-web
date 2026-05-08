@@ -1,0 +1,94 @@
+/* ────────────────────────────────────────────────────────
+   AIVerse Intelligence — design tokens
+   Single accent: lab green. Single mood: dark, neutral, precise.
+   ──────────────────────────────────────────────────────── */
+
+:root {
+  /* surface */
+  --bg:           #0A0A0B;
+  --surface:      #131316;
+  --surface-2:    #1A1A1F;
+
+  /* lines */
+  --border:       #26262B;
+  --border-bright:#3A3A40;
+
+  /* type */
+  --text:         #E8E6E1;
+  --muted:        #6B6A68;
+  --muted-2:      #8B8A88;
+
+  /* accent — lab green */
+  --accent:       #C9F564;
+  --accent-dim:   rgba(201, 245, 100, 0.6);
+  --accent-faint: rgba(201, 245, 100, 0.06);
+
+  /* type stacks */
+  --font-sans:  'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono:  'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, monospace;
+
+  /* layout */
+  --section-py:    clamp(80px, 12vw, 160px);
+  --container-px:  clamp(20px, 5vw, 64px);
+  --max-w:         1280px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.5;
+  font-feature-settings: 'ss01', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* subtle dot grid — lab-notebook feel */
+  background-image: radial-gradient(circle at 1px 1px, var(--border) 1px, transparent 0);
+  background-size: 40px 40px;
+  background-position: 0 0;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+a { color: inherit; text-decoration: none; }
+
+img { max-width: 100%; display: block; }
+
+/* ── shared utilities ── */
+
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding-left: var(--container-px);
+  padding-right: var(--container-px);
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  display: inline-block;
+}
+
+/* prefers-reduced-motion: kill blinks/pulses */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

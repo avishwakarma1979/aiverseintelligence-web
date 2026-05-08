@@ -1,0 +1,769 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const buildHash = `build.${new Date().toISOString().slice(0, 10)}.${Date.now().toString(36).slice(-5)}`;
+const year = new Date().getFullYear();
+
+const products = [
+  {
+    num: '01',
+    name: 'NiftyOI Engine',
+    desc: 'Live options-chain snapshots with centroid, DMT zones, and PCR thresholds — sourced direct from the Indian options market.',
+    status: 'LIVE',
+  },
+  {
+    num: '02',
+    name: 'APEX Signals',
+    desc: 'Multi-factor signal synthesis across EOD bhavcopy, intraday candles, and corporate-action history.',
+    status: 'LIVE',
+  },
+  {
+    num: '03',
+    name: 'Smart Money Concepts',
+    desc: 'Automated BOS / CHoCH structure detection for the NSE — read institutional flow, not retail noise.',
+    status: 'LIVE',
+  },
+];
+
+const thesis = [
+  { numeral: 'I', text: 'Indian retail deserves the same edge institutions have.' },
+  { numeral: 'II', text: 'AI is a tool, not a black box. Every signal must be explainable.' },
+  { numeral: 'III', text: 'Markets are local. Global models miss what NSE traders see.' },
+];
+
+const upcoming = [
+  { num: '02', tag: 'RESEARCH', name: 'Codename: Pulse', hint: '— in the lab —' },
+  { num: '03', tag: 'RESEARCH', name: 'Codename: Atlas', hint: '— in the lab —' },
+];
+---
+
+<Layout>
+  {/* ─── NAV ─── */}
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand" aria-label="AIVerse Intelligence — home">
+        <span class="brand-mark">[ AV ]</span>
+        <span class="brand-text">AIVerse Intelligence</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#product">Product</a></li>
+        <li><a href="#thesis">Thesis</a></li>
+        <li><a href="#next">Next</a></li>
+        <li><a href="https://stockaiverse.com" class="nav-cta" rel="noopener">stockaiverse.com&nbsp;→</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  {/* ─── HERO ─── */}
+  <section class="hero" id="top">
+    <div class="container">
+      <div class="hero-eyebrow">
+        <span class="dot" aria-hidden="true"></span>
+        <span>EST. 2026 / RESEARCH</span>
+      </div>
+
+      <h1 class="hero-title">
+        AI systems for markets that<br />
+        move faster than humans<span class="cursor" aria-hidden="true"></span>
+      </h1>
+
+      <p class="hero-sub">
+        We build AI co-pilots for Indian retail traders.<br />
+        <strong>StockAIVerse</strong> is our first.
+      </p>
+
+      <div class="hero-cta">
+        <a href="https://stockaiverse.com" class="btn btn-primary" rel="noopener">
+          Try StockAIVerse <span aria-hidden="true">→</span>
+        </a>
+        <a href="#thesis" class="btn btn-ghost">
+          Read thesis <span aria-hidden="true">↓</span>
+        </a>
+      </div>
+
+      <dl class="hero-meta">
+        <div class="meta-item">
+          <dt class="label">Coverage</dt>
+          <dd class="meta-val">NSE / BSE</dd>
+        </div>
+        <div class="meta-item">
+          <dt class="label">Asset class</dt>
+          <dd class="meta-val">Equities, Options</dd>
+        </div>
+        <div class="meta-item">
+          <dt class="label">Status</dt>
+          <dd class="meta-val">
+            <span class="status-dot" aria-hidden="true"></span> Operational
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  {/* ─── 01 / PRODUCT ─── */}
+  <section class="section" id="product">
+    <div class="container">
+      <div class="section-label">
+        <span class="num">01</span>
+        <span>PRODUCT</span>
+        <span class="rule" aria-hidden="true"></span>
+      </div>
+
+      <div class="section-head">
+        <h2 class="section-title">StockAIVerse<span class="dot-accent">.</span></h2>
+        <p class="section-lead">
+          An AI co-pilot for Indian markets. Built around how retail traders actually work — not how a US-trained S&amp;P&nbsp;500 model thinks they should.
+        </p>
+      </div>
+
+      <div class="tiles">
+        {
+          products.map((p) => (
+            <article class="tile">
+              <div class="tile-head">
+                <span class="tile-num">{p.num}.</span>
+                <span class="tile-status">
+                  <span class="status-dot" aria-hidden="true" />
+                  {p.status}
+                </span>
+              </div>
+              <h3 class="tile-title">{p.name}</h3>
+              <p class="tile-desc">{p.desc}</p>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="cta-row">
+        <a href="https://stockaiverse.com" class="btn btn-primary" rel="noopener">
+          Visit stockaiverse.com <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* ─── 02 / THESIS ─── */}
+  <section class="section" id="thesis">
+    <div class="container">
+      <div class="section-label">
+        <span class="num">02</span>
+        <span>THESIS</span>
+        <span class="rule" aria-hidden="true"></span>
+      </div>
+
+      <div class="section-head">
+        <h2 class="section-title">Three things we believe<span class="dot-accent">.</span></h2>
+      </div>
+
+      <ol class="thesis-list">
+        {
+          thesis.map((t) => (
+            <li class="thesis-item">
+              <div class="thesis-numeral">{t.numeral}.</div>
+              <div class="thesis-text">{t.text}</div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  {/* ─── 03 / NEXT ─── */}
+  <section class="section" id="next">
+    <div class="container">
+      <div class="section-label">
+        <span class="num">03</span>
+        <span>NEXT</span>
+        <span class="rule" aria-hidden="true"></span>
+      </div>
+
+      <div class="section-head">
+        <h2 class="section-title">In the lab<span class="dot-accent">.</span></h2>
+        <p class="section-lead">
+          What's next isn't ready to be public yet. But we're building it.
+        </p>
+      </div>
+
+      <div class="upcoming">
+        {
+          upcoming.map((u) => (
+            <article class="upcoming-card">
+              <div class="upcoming-head">
+                <span class="upcoming-num">{u.num}</span>
+                <span class="upcoming-tag">[ {u.tag} ]</span>
+              </div>
+              <h3 class="upcoming-name">{u.name}</h3>
+              <p class="upcoming-hint">{u.hint}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* ─── FOOTER ─── */}
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-col">
+        <a href="#top" class="brand">
+          <span class="brand-mark">[ AV ]</span>
+          <span class="brand-text">AIVerse Intelligence</span>
+        </a>
+        <p class="footer-tagline">Research lab · India · {year}</p>
+      </div>
+
+      <div class="footer-col">
+        <span class="label">Contact</span>
+        <a href="mailto:hello@aiverseintelligence.com" class="footer-link">
+          hello@aiverseintelligence.com
+        </a>
+      </div>
+
+      <div class="footer-col">
+        <span class="label">Products</span>
+        <a href="https://stockaiverse.com" class="footer-link" rel="noopener">stockaiverse.com →</a>
+      </div>
+
+      <div class="footer-col footer-col-end">
+        <span class="label">Build</span>
+        <code class="footer-build">{buildHash}</code>
+      </div>
+    </div>
+
+    <div class="footer-bar">
+      <div class="container footer-bar-inner">
+        <span>© {year} AIVerse Intelligence. All rights reserved.</span>
+        <span>aiverseintelligence.com</span>
+      </div>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  /* ─── NAV ─── */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(10, 10, 11, 0.72);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 22px;
+    padding-bottom: 22px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 12px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    transition: opacity 0.15s ease;
+  }
+  .brand:hover { opacity: 0.85; }
+
+  .brand-mark {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .brand-text {
+    font-size: 15px;
+    color: var(--text);
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .nav-links a {
+    color: var(--muted-2);
+    transition: color 0.15s ease;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-cta {
+    color: var(--accent) !important;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    padding-top: clamp(80px, 14vw, 180px);
+    padding-bottom: clamp(80px, 14vw, 160px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--muted-2);
+    margin-bottom: 40px;
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+  }
+
+  .hero-eyebrow .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.45; transform: scale(0.85); }
+  }
+
+  .hero-title {
+    font-size: clamp(38px, 7vw, 84px);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 32px;
+    max-width: 16ch;
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 0.55ch;
+    height: 0.85em;
+    margin-left: 8px;
+    background: var(--accent);
+    transform: translateY(2px);
+    animation: blink 1.05s steps(1, end) infinite;
+  }
+
+  @keyframes blink {
+    0%, 49%   { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
+
+  .hero-sub {
+    font-size: clamp(17px, 1.6vw, 20px);
+    color: var(--muted-2);
+    line-height: 1.55;
+    max-width: 56ch;
+    margin-bottom: 56px;
+  }
+
+  .hero-sub strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+  }
+
+  /* ── Buttons ── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 22px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.005em;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.12s ease;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+  }
+  .btn-primary:hover {
+    background: transparent;
+    color: var(--accent);
+  }
+  .btn-primary:active { transform: translateY(1px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--border-bright);
+  }
+  .btn-ghost:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .btn-ghost:active { transform: translateY(1px); }
+
+  /* ── Hero meta strip ── */
+  .hero-meta {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    max-width: 720px;
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .meta-val {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 6px var(--accent);
+    flex-shrink: 0;
+    display: inline-block;
+  }
+
+  /* ─── SECTIONS ─── */
+  .section {
+    padding-top: var(--section-py);
+    padding-bottom: var(--section-py);
+  }
+
+  .section + .section {
+    border-top: 1px solid var(--border);
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+  }
+
+  .section-label .num {
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .section-label .rule {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-head {
+    margin-top: 40px;
+    margin-bottom: 64px;
+    max-width: 720px;
+  }
+
+  .section-title {
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+
+  .dot-accent {
+    color: var(--accent);
+  }
+
+  .section-lead {
+    font-size: clamp(16px, 1.4vw, 18px);
+    color: var(--muted-2);
+    line-height: 1.55;
+  }
+
+  /* ─── PRODUCT TILES ─── */
+  .tiles {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--surface);
+  }
+
+  .tile {
+    padding: 36px 32px;
+    border-right: 1px solid var(--border);
+    background: var(--surface);
+    position: relative;
+    transition: background 0.2s ease;
+  }
+  .tile:last-child { border-right: none; }
+  .tile:hover { background: var(--surface-2); }
+
+  .tile::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: transparent;
+    transition: background 0.2s ease;
+  }
+  .tile:hover::before { background: var(--accent); }
+
+  .tile-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+  }
+
+  .tile-num { color: var(--muted); }
+
+  .tile-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--accent);
+  }
+
+  .tile-title {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+  }
+
+  .tile-desc {
+    font-size: 14px;
+    color: var(--muted-2);
+    line-height: 1.6;
+  }
+
+  .cta-row { margin-top: 56px; }
+
+  /* ─── THESIS ─── */
+  .thesis-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .thesis-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 32px;
+    padding: 36px 0;
+    border-top: 1px solid var(--border);
+    align-items: baseline;
+  }
+  .thesis-item:last-child { border-bottom: 1px solid var(--border); }
+
+  .thesis-numeral {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+
+  .thesis-text {
+    font-size: clamp(20px, 2.2vw, 28px);
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+
+  /* ─── NEXT / UPCOMING ─── */
+  .upcoming {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .upcoming-card {
+    border: 1px dashed var(--border-bright);
+    border-radius: 4px;
+    padding: 48px 36px;
+    background:
+      linear-gradient(135deg, transparent 0%, var(--accent-faint) 200%),
+      var(--surface);
+    transition: border-color 0.2s ease;
+  }
+  .upcoming-card:hover { border-color: var(--accent-dim); }
+
+  .upcoming-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+  }
+
+  .upcoming-num { color: var(--muted); font-size: 14px; }
+  .upcoming-tag { color: var(--accent); }
+
+  .upcoming-name {
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+
+  .upcoming-hint {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr 1.2fr 1.2fr;
+    gap: 32px;
+    padding-top: 64px;
+    padding-bottom: 56px;
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-col-end {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  .footer-tagline {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-link {
+    font-size: 14px;
+    color: var(--text);
+    transition: color 0.15s ease;
+  }
+  .footer-link:hover { color: var(--accent); }
+
+  .footer-build {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    background: var(--bg);
+    padding: 5px 9px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+  }
+
+  .footer-bar {
+    border-top: 1px solid var(--border);
+    padding-top: 18px;
+    padding-bottom: 22px;
+  }
+
+  .footer-bar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 920px) {
+    .nav-links { gap: 18px; }
+    .nav-links li:nth-child(-n+3) { display: none; }
+    .brand-text { display: none; }
+
+    .hero-meta {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .tiles { grid-template-columns: 1fr; }
+    .tile {
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+    }
+    .tile:last-child { border-bottom: none; }
+
+    .thesis-item {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .upcoming { grid-template-columns: 1fr; }
+
+    .footer-inner {
+      grid-template-columns: 1fr 1fr;
+    }
+    .footer-col-end {
+      text-align: left;
+      align-items: flex-start;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .hero-cta {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .btn { justify-content: center; }
+
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bar-inner {
+      flex-direction: column;
+      gap: 6px;
+      align-items: flex-start;
+    }
+  }
+</style>
