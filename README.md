@@ -1,4 +1,4 @@
-# AIVerse Intelligence — Web
+# AiVerse Intelligence — Web
 
 Static marketing site for [aiverseintelligence.com](https://aiverseintelligence.com).
 Single-page lab/holding-company site that promotes [stockaiverse.com](https://stockaiverse.com).
@@ -68,7 +68,7 @@ The nav uses a typographic mark `[ AV ]` in lab-green mono — because the JPEG 
 2. In `src/pages/index.astro`, replace the `.brand` block with:
    ```astro
    <a href="#top" class="brand">
-     <img src="/aiverse-logo.svg" alt="AIVerse Intelligence" height="28" />
+     <img src="/aiverse-logo.svg" alt="AiVerse Intelligence" height="28" />
    </a>
    ```
 
@@ -95,4 +95,4 @@ Page-section styles are scoped inside `index.astro`'s `<style>` block. Global to
 
 ## License
 
-Proprietary — © AIVerse Intelligence.
+Proprietary — © AiVerse Intelligence.

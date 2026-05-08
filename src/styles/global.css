@@ -28,7 +28,7 @@
   --font-mono:  'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, monospace;
 
   /* layout */
-  --section-py:    clamp(80px, 12vw, 160px);
+  --section-py:    clamp(56px, 7vw, 88px);
   --container-px:  clamp(20px, 5vw, 64px);
   --max-w:         1280px;
 }
