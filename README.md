@@ -1,16 +1,22 @@
 # AiVerse Intelligence — Web
 
-Static marketing site for [aiverseintelligence.com](https://aiverseintelligence.com).
-Single-page lab/holding-company site that promotes [stockaiverse.com](https://stockaiverse.com).
+> Live at **https://aiverseintelligence.com**
 
-Built with Astro 5. Designed for $0/mo hosting on Cloudflare Pages.
+Single-page marketing site for the **AiVerse Intelligence** lab brand,
+promoting [stockaiverse.com](https://stockaiverse.com) as Product 01.
+
+Astro 5 static site → Cloudflare Pages → **$0/mo**.
+
+---
 
 ## Stack
 
 - **Astro 5** — zero-JS static site generator
-- Vanilla CSS with design tokens (`src/styles/global.css`)
+- Vanilla CSS, design tokens in `src/styles/global.css`
 - Google Fonts: Inter + JetBrains Mono
-- No client-side JS, no analytics, no tracking (yet)
+- No client JS, no analytics, no tracking
+
+---
 
 ## Local development
 
@@ -23,54 +29,51 @@ npm run build        # builds to ./dist
 npm run preview      # preview the production build
 ```
 
-## Deploy — Cloudflare Pages (free)
+---
 
-1. Push this repo to GitHub.
-2. Cloudflare dashboard → **Workers & Pages** → **Create** → **Pages** → **Connect to Git**.
-3. Pick the repo. Build settings:
-   - **Framework preset:** Astro
-   - **Build command:** `npm run build`
-   - **Build output directory:** `dist`
-   - **Node version:** `20` (set under env vars: `NODE_VERSION=20`)
-4. Save and deploy. First build takes ~60s.
-5. **Custom domain:** Pages project → **Custom domains** → add `aiverseintelligence.com` and `www.aiverseintelligence.com`. Cloudflare auto-issues SSL. Update your registrar's nameservers to Cloudflare's (or, if domain is already on Cloudflare DNS, the CNAME is added automatically).
+## Deploying changes
 
-That's it. Free CDN, free HTTPS, free preview deploys per branch, unlimited bandwidth.
+```bash
+git add -A
+git commit -m "describe change"
+git push
+```
+
+That's it. Cloudflare Pages auto-rebuilds on every push to `master` and the new
+version is live in ~60 seconds. Watch progress at:
+
+**Cloudflare dashboard → Workers & Pages → `aiverseintelligence-web` → Deployments**
+
+For full one-time setup (DNS migration, Cloudflare Pages config, troubleshooting):
+→ **[`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md)**
+
+---
 
 ## Editing copy
 
-All page copy lives in `src/pages/index.astro` frontmatter — the `products`, `thesis`, `upcoming` arrays, and the hero block. Push a commit → Cloudflare auto-rebuilds.
+All page copy lives in `src/pages/index.astro` frontmatter:
+
+- `products[]` — the 3 LIVE tiles in the Product section
+- `thesis[]` — the 3 numbered statements
+- `upcoming[]` — the 2 R&D cards in the NEXT section
+
+Hero copy (H1, sub, eyebrow), section titles, and footer are inline in the JSX.
+
+---
 
 ## Editing design
 
-Design tokens in `src/styles/global.css` `:root`. Change the accent in one place:
+All design tokens live in `src/styles/global.css` `:root`. The single accent is
+controlled in one place:
 
 ```css
---accent: #C9F564;   /* lab green — change here */
+--accent: #C9F564;   /* lab green */
 ```
 
-Recommended alternates if you change your mind:
-- Amber: `#F5B454`
-- Cool blue: `#7AA2FF`
-- Coral: `#FF7A66`
+Section-level styles are scoped inside `src/pages/index.astro`'s `<style>` block.
+Global base styles + tokens live in `global.css`.
 
-## Logo
-
-`public/aiverse-logo.jpeg` is your existing AIVerse logo (gradient A + wordmark on white). It's currently used as:
-
-- Open Graph image (social link previews)
-- `apple-touch-icon`
-- Fallback favicon
-
-The nav uses a typographic mark `[ AV ]` in lab-green mono — because the JPEG has a white background that would look like a foreign object on the dark page. To use the actual logo in the nav:
-
-1. Drop a transparent SVG/PNG at `public/aiverse-logo.svg` (or `.png`).
-2. In `src/pages/index.astro`, replace the `.brand` block with:
-   ```astro
-   <a href="#top" class="brand">
-     <img src="/aiverse-logo.svg" alt="AiVerse Intelligence" height="28" />
-   </a>
-   ```
+---
 
 ## Project structure
 
@@ -79,19 +82,61 @@ The nav uses a typographic mark `[ AV ]` in lab-green mono — because the JPEG 
 ├── astro.config.mjs
 ├── package.json
 ├── tsconfig.json
+├── README.md                     # this file
+├── docs/
+│   └── DEPLOYMENT.md             # full deploy + DNS migration guide
 ├── public/
-│   ├── aiverse-logo.jpeg     # OG image + fallback favicon
-│   └── favicon.svg           # primary favicon (lab-green AV mark)
+│   ├── favicon.svg               # primary favicon (lab-green AV mark)
+│   ├── aiverse-logo-removebg-preview.png   # nav + footer logo (transparent)
+│   └── aiverse-logo.jpeg         # OG image + apple-touch-icon (white-bg, universal)
 └── src/
     ├── layouts/
-    │   └── Layout.astro      # HTML shell, meta, fonts
+    │   └── Layout.astro          # HTML shell, fonts, OG/Twitter meta
     ├── pages/
-    │   └── index.astro       # the entire one-pager (sections inline)
+    │   └── index.astro           # the entire 1-pager (sections inline)
     └── styles/
-        └── global.css        # design tokens + base styles
+        └── global.css            # design tokens + base styles
 ```
 
-Page-section styles are scoped inside `index.astro`'s `<style>` block. Global tokens live in `global.css`.
+---
+
+## Brand & copy conventions
+
+- Casing: **`AiVerse Intelligence`** (lowercase `i`, matches the logo). Never `AIVerse`.
+- Product name: **`StockAiVerse`**. Never `StockAIVerse`.
+- URLs / domains stay lowercase as standard (`stockaiverse.com`,
+  `aiverseintelligence.com`, `hello@aiverseintelligence.com`).
+- Visual: dark `#0A0A0B` bg, single lab-green `#C9F564` accent, hairline borders,
+  mono labels and numbers.
+- No emoji in code or copy.
+- No chatbot — email-only contact (`hello@aiverseintelligence.com`) is on-brand
+  for a lab/research page.
+
+---
+
+## Logo
+
+- **`public/aiverse-logo-removebg-preview.png`** — transparent PNG, used in nav
+  and footer.
+- **`public/aiverse-logo.jpeg`** — white-bg version, used as Open Graph / Twitter
+  preview image and `apple-touch-icon` (where a solid square works better than
+  transparency).
+- **`public/favicon.svg`** — lab-green `AV` mark on dark, primary favicon.
+
+---
+
+## Infra summary
+
+| | |
+|---|---|
+| **Domain** | aiverseintelligence.com (registered at GoDaddy) |
+| **DNS** | Cloudflare nameservers |
+| **Hosting** | Cloudflare Pages (free tier) |
+| **Email** | Mailgun (MX/SPF/DKIM via Cloudflare DNS) |
+| **Source** | https://github.com/avishwakarma1979/aiverseintelligence-web |
+| **Recurring cost** | $0/mo |
+
+---
 
 ## License
 
