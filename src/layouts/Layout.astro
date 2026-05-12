@@ -57,6 +57,20 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
           mask_all_text: false,
           session_recording: { maskAllInputs: true },
         });
+        document.addEventListener("click", function(e) {
+          var a = e.target.closest("a");
+          if (!a || !a.href) return;
+          try {
+            var url = new URL(a.href);
+            if (url.hostname !== window.location.hostname) {
+              posthog.capture("outbound_link_clicked", {
+                url: a.href,
+                text: (a.textContent || "").trim().slice(0, 80),
+                from_path: window.location.pathname,
+              });
+            }
+          } catch(err) {}
+        }, true);
       </script>
     )}
 
