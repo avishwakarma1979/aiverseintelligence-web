@@ -62,14 +62,31 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
           if (!a || !a.href) return;
           try {
             var url = new URL(a.href);
-            if (url.hostname !== window.location.hostname) {
-              posthog.capture("outbound_link_clicked", {
-                url: a.href,
-                text: (a.textContent || "").trim().slice(0, 80),
-                from_path: window.location.pathname,
-              });
+            if (url.hostname === window.location.hostname) return;
+            e.preventDefault();
+            // For StockAiVerse links: add UTM attribution + cross-domain identity
+            if (url.hostname.indexOf("stockaiverse.com") !== -1) {
+              url.searchParams.set("utm_source", "aiverseintelligence");
+              url.searchParams.set("utm_medium", "referral");
+              try { url.searchParams.set("ph_distinct_id", posthog.get_distinct_id()); } catch(_) {}
             }
-          } catch(err) {}
+            var dest = url.toString();
+            posthog.capture("outbound_link_clicked", {
+              url: a.href,
+              dest: dest,
+              text: (a.textContent || "").trim().slice(0, 80),
+              from_path: window.location.pathname,
+              destination_domain: url.hostname,
+            });
+            // 150ms lets PostHog flush the batch before the page unloads
+            setTimeout(function() {
+              if (a.target === "_blank") { window.open(dest, "_blank"); }
+              else { window.location.href = dest; }
+            }, 150);
+          } catch(err) {
+            // Safety: if anything throws, let the click proceed normally
+            if (a.href) window.location.href = a.href;
+          }
         }, true);
       </script>
     )}
