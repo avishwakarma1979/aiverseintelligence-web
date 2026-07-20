@@ -25,6 +25,27 @@ const products = [
   },
 ];
 
+const enlighto = [
+  {
+    num: '01',
+    name: 'Fees & Accounting',
+    desc: 'Invoices, receipts, and expense ledgers with a full edit-and-cancel audit trail — compliance-grade bookkeeping built for coaching institutes.',
+    status: 'LIVE',
+  },
+  {
+    num: '02',
+    name: 'Academics Engine',
+    desc: "Attendance, homework, marks, and progress charts — scoped to each teacher's own class-and-subject assignments.",
+    status: 'LIVE',
+  },
+  {
+    num: '03',
+    name: 'Role Portals',
+    desc: 'Separate admin, teacher, and parent logins — parents track dues and attendance, teachers mark class-first, and two-way notes run throughout.',
+    status: 'LIVE',
+  },
+];
+
 const thesis = [
   { numeral: 'I', text: 'Indian retail deserves the same edge institutions have.' },
   { numeral: 'II', text: 'AI is a tool, not a black box. Every signal must be explainable.' },
@@ -156,6 +177,39 @@ const upcoming = [
           Visit stockaiverse.com <span aria-hidden="true">→</span>
         </a>
       </div>
+
+      <div class="product-block">
+        <div class="section-head">
+          <h2 class="section-title">Enlighto Academy<span class="dot-accent">.</span></h2>
+          <p class="section-lead">
+            An all-in-one management portal for coaching institutes and academies — fees, academics, and family communication in one place, not spread across a dozen spreadsheets.
+          </p>
+        </div>
+
+        <div class="tiles">
+          {
+            enlighto.map((p) => (
+              <article class="tile">
+                <div class="tile-head">
+                  <span class="tile-num">{p.num}.</span>
+                  <span class="tile-status">
+                    <span class="status-dot" aria-hidden="true" />
+                    {p.status}
+                  </span>
+                </div>
+                <h3 class="tile-title">{p.name}</h3>
+                <p class="tile-desc">{p.desc}</p>
+              </article>
+            ))
+          }
+        </div>
+
+        <div class="cta-row">
+          <a href="https://enlightoacademy.com" class="btn btn-primary" rel="noopener">
+            Visit enlightoacademy.com <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -245,6 +299,7 @@ const upcoming = [
       <div class="footer-col">
         <span class="label">Products</span>
         <a href="https://stockaiverse.com" class="footer-link" rel="noopener">stockaiverse.com →</a>
+        <a href="https://enlightoacademy.com" class="footer-link" rel="noopener">enlightoacademy.com →</a>
       </div>
 
       <div class="footer-col footer-col-end">
@@ -603,6 +658,13 @@ const upcoming = [
   }
 
   .cta-row { margin-top: 36px; }
+
+  .product-block {
+    margin-top: 72px;
+    padding-top: 64px;
+    border-top: 1px solid var(--border);
+  }
+  .product-block .section-head { margin-top: 0; }
 
   /* ─── THESIS ─── */
   .thesis-list {
